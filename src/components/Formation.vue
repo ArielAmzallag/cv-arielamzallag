@@ -53,14 +53,13 @@
   ]);
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
+  @import '../style.scss';
 .formation {
-  background: var(--color-card-background);
-  color: var(--color-base);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  margin-top: 2rem;
-}
+
+    @include tablet {
+        padding: $padding-small;
+      }
   
 .education-entry {
     border-bottom: 1px solid var(--color-secondary);
@@ -70,6 +69,23 @@
     &:last-child {
       border-bottom: none;
     }
+
+
+
+    &:hover {
+        .school-logo img {
+          transform: scale(1.1);
+        }
+        background-color: darken($color-card-background, 5%);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+        &:before {
+            @include slide-in;
+          }
+
+
+        
+      }
   
     .education-header {
         display: flex;
@@ -108,9 +124,14 @@
       flex: 1;
   
       h3 {
-        color: var(--color-primary);
-        margin-top: 0;
-      }
+        color: $color-primary;
+        cursor: pointer;
+        margin: 0;
+        padding: $padding-small;
+        position: relative;
+        z-index: 2; 
+        transition: color 0.3s ease;
+    }
   
       .date {
         font-style: italic;
@@ -148,5 +169,6 @@
       flex-direction: column;
     }
   }
+}
   </style>
   

@@ -9,19 +9,11 @@
   // Script setup area
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
+  @import '../style.scss';
   .presentation {
+    @include card-style;
     text-align: center;
-    background: var(--color-background);
-    color: var(--color-base);
   }
-  
-  .presentation h1 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .presentation p {
-    color: var(--color-secondary);
-  }
-  </style>
+ </style>
   

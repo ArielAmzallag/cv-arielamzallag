@@ -26,63 +26,28 @@
   ]);
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
+  @import '../style.scss';
   .projects {
-    background: var(--color-card-background);
-    color: var(--color-base);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    margin-top: 2rem;
-  }
-  
-  .project-entry {
-    border-bottom: 1px solid var(--color-secondary);
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-  
-    &:last-child {
-      border-bottom: none;
-    }
-  
-    h3 {
-      color: var(--color-primary);
-      margin-top: 0;
-    }
-  
-    .description {
-      margin: 0.5rem 0;
-      color: var(--color-secondary);
-    }
-  
-    .status {
-      font-style: italic;
-      color: var(--color-info);
-    }
-  
-    .technologies {
-      span {
-        display: inline-block;
-        background-color: var(--color-primary);
-        color: var(--color-background);
-        padding: 0.2rem 0.6rem;
-        border-radius: var(--border-radius);
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        font-weight: bold;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
+    @include hover-effect;
+    @include tablet {
+        padding: $padding-small;
+      }
+    .project-entry {
+      border-bottom: 1px solid $color-secondary;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      &:last-child {
+        border-bottom: none;
+      }
+      h3 {
+        color: $color-primary;
+        &:hover {
+          color: $color-info;
+        }
       }
     }
   }
-  
-  @media (max-width: 768px) {
-    .projects {
-      padding: calc(var(--padding-section) / 2);
-    }
-  
-    .project-entry {
-      
-    }
-  }
   </style>
+  
   

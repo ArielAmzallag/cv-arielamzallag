@@ -13,49 +13,101 @@
   <script setup>
   import { ref } from 'vue';
   
-  // Define your skills and their corresponding proficiency levels
   const skills = ref([
-    { name: 'Python', level: 'Intermediate' },
-    { name: 'C#', level: 'Beginner' },
-    { name: 'Project Management', level: 'Intermediate' },
-    { name: 'JavaScript', level: 'Intermediate' },
-    // ... add all your other skills here with the appropriate level
-    { name: 'Kotlin', level: 'Beginner' },
-  ]);
+  { name: 'Python', level: 'Intermediate' },
+  { name: 'C#', level: 'Beginner' },
+  { name: 'Project Management', level: 'Beginner' },
+  { name: 'JavaScript', level: 'Intermediate' },
+  { name: 'HTML5', level: 'Intermediate' },
+  { name: 'CSS', level: 'Intermediate' },
+  { name: 'SQL', level: 'Novice' },
+  { name: 'PHP', level: 'Novice' },
+  { name: 'MariaDB, MySQL, MongoDB', level: 'Novice' },
+  { name: 'Vue.js', level: 'Beginner' },
+  { name: 'Three.js', level: 'Beginner' },
+  { name: 'Alpine.js', level: 'Novice' },
+  { name: 'Tailwind CSS', level: 'Novice' },
+  { name: 'React.js', level: 'Beginner' },
+  { name: 'Node.js', level: 'Novice' },
+  { name: 'Java', level: 'Novice' },
+  { name: 'Kotlin', level: 'Beginner' },
+]);
   </script>
   
-  <style scoped>
+  <style lang="scss" scoped>
+  @import '../style.scss';
+
   .skills {
-    background-color: var(--color-card-background);
-    padding: var(--padding-section);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    @include card-style;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    @include tablet {
+        padding: $padding-small; // Reduce padding on smaller screens
+      }
+    
+    &:before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  
+  
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      perspective: 800px;
+    }
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      transform: rotateX(0deg);
+      transition: transform 0.3s ease-out;
+      
+      &:hover {
+        transform: rotateX(10deg);
+      }
+    }
+    
+    .skill-name {
+      color: $color-base;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    
+    .skill-level {
+      background-color: $color-primary;
+      color: $color-background;
+      padding: 0.2rem 0.6rem;
+      border-radius: $border-radius;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        background-color: lighten($color-primary, 10%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .skills {
+        padding: 1rem;
+      }
+    }
   }
   
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
   
-  li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    align-items: center;
-  }
-  
-  .skill-name {
-    color: var(--color-base);
-  }
-  
-  .skill-level {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--border-radius);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
   </style>
   

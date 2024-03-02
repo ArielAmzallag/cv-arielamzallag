@@ -1,0 +1,164 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+$color-primary: #00d1b2;
+$color-secondary: #cdd9e5;
+$color-base: #f0f6fc;
+$color-background: #011627;
+$color-card-background: #1d3b53;
+$color-error: #ef476f;
+$color-success: #06d6a0;
+$color-info: #118ab2;
+$color-background-page: #022b3a;
+$padding-section: 2rem;
+$padding-small: 1rem;
+$border-radius: 10px;
+$border-radius-small: 5px;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+$font-family-base: 'Orbitron', sans-serif;
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+@mixin card-style {
+  background: $color-card-background;
+  color: $color-base;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: $padding-section;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+}
+
+@mixin hover-effect {
+  @include card-style;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: darken($color-card-background, 5%);
+  }
+}
+
+@mixin slide-in {
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@mixin media-query($size) {
+  @if $size == small-screen {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin responsive-text {
+  @media (max-width: $breakpoint-tablet) {
+    font-size: calc(1rem + (2vw - 0.5rem));
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: calc(1rem + (2vw - 1rem));
+  }
+}
+
+
+html {
+  font-family: $font-family-base; 
+  background-color: $color-background-page; 
+  color: $color-base; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $padding-section; 
+  background-image: url('./assets/futuristic-background.jpg');
+  background-size: cover;
+
+  @media (max-width: $breakpoint-tablet) {
+    background: $color-background-page; // Overrides background image to hide it
+  }
+}
+
+#app {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: $padding-section; 
+}
+
+.card {
+  @include card-style;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $padding-small;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+p {
+  color: $color-secondary; 
+}
+
+h1, h2, p {
+  @include responsive-text;
+}
+
+.m-1 { margin: 1rem; }
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
+.ml-1 { margin-left: 1rem; }
+.mr-1 { margin-right: 1rem; }
+
+.p-1 { padding: 1rem; }
+.pt-1 { padding-top: 1rem; }
+.pb-1 { padding-bottom: 1rem; }
+.pl-1 { padding-left: 1rem; }
+.pr-1 { padding-right: 1rem; }
+
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style.css'
+import './style.scss'
 import App from './App.vue'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -10,7 +10,6 @@ export default {
     FontAwesomeIcon,
   },
   setup() {
-    // Add icons to the library for easy reference
     library.add(faEnvelope, faLinkedinIn);
   },
 };
